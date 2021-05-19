@@ -1,0 +1,24 @@
+[Unit]
+Description=Fail2Ban Remote Updater Service
+#Documentation=man:fail2ban(1)
+After=fail2ban.service
+#PartOf=firewalld.service
+
+[Service]
+Type=forking
+ExecStartPre=/bin/mkdir -p /var/run/fail2ban-remote
+#ExecStart=/root/f2br/fail2ban-remote.py
+#ExecStart=/root/f2br/fail2ban-remote.py 2>&1 >> /var/log/fail2ban-remote.log
+ExecStart=/root/f2br/fail2ban-remote.py 2>&1 >> /var/log/fail2ban-remote.log
+
+# if should be logged in systemd journal, use following line or set logtarget to sysout in fail2ban.local
+# ExecStart=/usr/bin/fail2ban-server -xf --logtarget=sysout start
+
+# ExecStop=/usr/bin/fail2ban-client stop
+# ExecReload=/usr/bin/fail2ban-client reload
+PIDFile=/var/run/fail2ban-remote/fail2ban-remote.pid
+Restart=on-failure
+RestartPreventExitStatus=0 255
+
+[Install]
+WantedBy=multi-user.target
