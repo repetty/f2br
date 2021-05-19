@@ -3,7 +3,7 @@
 from pygtail import Pygtail
 import paramiko
 import time
-import datetime
+from datetime import datetime
 import sys
 import re
 import json
