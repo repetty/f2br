@@ -10,9 +10,6 @@ import json
 import os
 
 
-# f2b_log = ""
-# remote_log = ""
-# debug_log = ""
 settings = "/etc/fail2ban-remote.json"
 
 def initialize(settings, debug_flag=False):
@@ -94,7 +91,6 @@ class remote_server_class:
 
 
 initialize(settings, False)
-print("Fork completed.")
 
 
 pid = os.fork()
@@ -110,7 +106,9 @@ if pid:
     remote_log.write(logline)
   os._exit(0)  # Kill original process.
 
-# print("Daemon started.")
+
+print("Fork completed.")
+
 
 while True:
   # print("Waited one second.")
