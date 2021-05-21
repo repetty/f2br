@@ -10,6 +10,8 @@ The f2br code is written in Python 3 and requires no special modules that aren't
 TODO's
 - Batch ban commands per host before SSH connections
 - Prevent possible SSH connection storms
+- Installer
+- Uninstaller
 
 ----
 References
